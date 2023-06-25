@@ -1,0 +1,22 @@
+version: '3'
+
+tasks:
+   start :
+    cmds:
+      - symfony server:start
+
+  cc:
+    cmds:
+      - php bin/console cache:clear
+
+  migrate:
+    cmds:
+      - php bin/console doctrine:migrations:migrate
+    description: Run database migrations
+
+################### TO DO 
+#  test:
+#     cmds:
+#       - php bin/phpunit
+#     description: Run PHPUnit tests
+
