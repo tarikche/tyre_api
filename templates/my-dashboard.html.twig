@@ -1,5 +1,7 @@
 {% extends '@EasyAdmin/page/content.html.twig' %}
 
 {% block content %}
-    <h1>Je suis là</h1>
+    <div {{ react_component('Hello', { 'fullName': 'Tarik' }) }}>
+        {# Loading... <i class="fas fa-cog fa-spin fa-3x"></i> #}
+    </div>
 {% endblock %}
