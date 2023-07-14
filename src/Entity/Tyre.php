@@ -18,6 +18,15 @@ class Tyre
     #[ORM\OneToMany(mappedBy: 'tyre', targetEntity: Stock::class, orphanRemoval: true)]
     private Collection $stocks;
 
+    #[ORM\Column(length: 255)]
+    private ?string $brand = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $season = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $dimentions = null;
+
     public function __construct()
     {
         $this->stocks = new ArrayCollection();
@@ -54,6 +63,42 @@ class Tyre
                 $stock->setTyre(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBrand(): ?string
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(string $brand): static
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function getSeason(): ?string
+    {
+        return $this->season;
+    }
+
+    public function setSeason(?string $season): static
+    {
+        $this->season = $season;
+
+        return $this;
+    }
+
+    public function getDimentions(): ?string
+    {
+        return $this->dimentions;
+    }
+
+    public function setDimentions(string $dimentions): static
+    {
+        $this->dimentions = $dimentions;
 
         return $this;
     }

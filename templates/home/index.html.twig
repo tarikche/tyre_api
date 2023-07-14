@@ -7,11 +7,12 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
- <h1 class="text-3xl font-bold ">
-    Hello world!
-  </h1>
 
-<div {{ react_component('Hello', { 'fullName': 'TArik' }) }}>
-        Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
+    <div  {{ react_component('Header') }}>
     </div>
+    <div  {{ react_component('Search') }}>
+    </div>
+    <div  {{ react_component('Tyres') }}>
+    </div>
+    
 {% endblock %}
