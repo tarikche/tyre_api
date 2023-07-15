@@ -10,7 +10,7 @@ const Header = () => {
         
     </nav>
     <div class='text-center w-1/3 '>
-        <h2>Car</h2>
+        <h2>_________</h2>
         
     </div>
     <div class="flex justify-end w-2/3  ">

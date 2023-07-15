@@ -20,27 +20,23 @@ class TyreController extends AbstractController
         
     }
 
-    #[Route('/api/tyre/search/{value}  ', name: 'tyre_search')]
-    public function searchTyre($value): Response   
+    #[Route('/api/tyre/search  ', name: 'tyre_search')]
+    public function searchTyre(Request $request): Response   
     {
-       
-        $result = $this->em->getRepository(Tyre::class)->searchTyreByAll($value);
-        
-    
-        
-        
         $data = [];
-
-        foreach ($result as $item) {
-            // Convert each entity to an associative array
-            $data[] = [
-               $item->getBrand()
-                // Add more fields as needed
-            ];
+        $value = $request->query->get('term');
+        if (empty( $value)){
+            $data[] = [];
+        }else{
+            $result = $this->em->getRepository(Tyre::class)->searchTyreByAll($value);
+            foreach ($result as $item) {
+                // Convert each entity to an associative array
+                $data[] = [
+                $item->getBrand()
+                    // Add more fields as needed
+                ];
+            }
         }
-
         return new JsonResponse($data);
-        
-
     }
 }

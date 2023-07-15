@@ -41,12 +41,12 @@ class TyreRepository extends ServiceEntityRepository
 
     public function searchTyreByAll($value){
         return $this->createQueryBuilder('t')
-        ->andWhere('t.brand LIKE :val')
-        ->setParameter('val', '%' . $value . '%') 
-        ->orderBy('t.id', 'ASC')
-        ->setMaxResults(10)
-        ->getQuery()
-        ->getResult();
+            ->andWhere('t.brand LIKE :val')
+            ->setParameter('val', '%' . $value . '%') 
+            ->orderBy('t.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**

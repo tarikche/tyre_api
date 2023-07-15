@@ -14,26 +14,30 @@ const Search = () => {
   }, [searchTerm]);
 
   const fetchSuggestions = async () => {
+    console.log(searchTerm);
     try {
-        console.log('ekeksfkefekf');
-      const response = await fetch(`${API_URL}/api/tyre/search/${searchTerm}`);
+      const response = await fetch(`${API_URL}/api/tyre/search?term=${searchTerm}`);
       const data = await response.json();
-      setSuggestions(data.suggestions);
+      setSuggestions(data);
     } catch (error) {
         console.log('Response:', error.response);
       console.error('Error fetching suggestions:', error);
     }
   };
 
+
+  const isInputEmpty = searchTerm === '';
+  const ulClassName = isInputEmpty ? 'invisible' : '';
+
   return (
-    <div class='mb-8 mt-64  flex justify-center'>
-      <input class='w-4/7 text-8xl p-5 rounded-full text-center bg-sky-100 tracking-wide '
+    <div class='mb-8 mt-64 flex flex-col items-center'>
+      <input class='w-1/2 text-7xl p-5 rounded-full text-center bg-sky-100 tracking-wide '
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search..."
       />
-      <ul>
+      <ul className={ulClassName}>
         {suggestions.map((suggestion, index) => (
           <li key={index}>{suggestion}</li>
         ))}
