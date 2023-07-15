@@ -39,18 +39,28 @@ class TyreRepository extends ServiceEntityRepository
         }
     }
 
+    public function searchTyreByAll($value){
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.brand LIKE :val')
+            ->setParameter('val', '%' . $value . '%') 
+            ->orderBy('t.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Tyre[] Returns an array of Tyre objects
 //     */
 //    public function findByExampleField($value): array
 //    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('t.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
+    //    return $this->createQueryBuilder('t')
+    //        ->andWhere('t.exampleField = :val')
+    //        ->setParameter('val', $value)
+    //        ->orderBy('t.id', 'ASC')
+    //        ->setMaxResults(10)
+    //        ->getQuery()
+    //        ->getResult()
 //        ;
 //    }
 

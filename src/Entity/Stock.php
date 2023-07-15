@@ -15,7 +15,7 @@ class Stock
 
     #[ORM\ManyToOne(inversedBy: 'stocks')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?supplier $supplier = null;
+    private ?Supplier $supplier = null;
 
     #[ORM\ManyToOne(inversedBy: 'stocks')]
     #[ORM\JoinColumn(nullable: false)]
@@ -29,12 +29,12 @@ class Stock
         return $this->id;
     }
 
-    public function getSupplier(): ?supplier
+    public function getSupplier(): ?Supplier
     {
         return $this->supplier;
     }
 
-    public function setSupplier(?supplier $supplier): static
+    public function setSupplier(?Supplier $supplier): static
     {
         $this->supplier = $supplier;
 

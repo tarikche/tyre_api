@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: rgb(172, 215, 255);
+}
+
+body {
+    background-color: var(--primary-color);
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* Search */
+
+.tyres-container {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .tyres {
+    display: flex;
+    animation: moveRight 10s linear infinite;
+  }
+  
+  @keyframes moveRight {
+    0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+  }
