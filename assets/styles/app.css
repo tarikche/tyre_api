@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: rgb(172, 215, 255);
+  /* --primary-color: rgb(172, 215, 255); */
+  --primary-color: white;
 }
 
 body {

@@ -1,7 +1,7 @@
 version: '3'
 
 tasks:
-   start :
+  start :
     cmds:
       - symfony server:start
 
@@ -13,6 +13,13 @@ tasks:
     cmds:
       - php bin/console doctrine:migrations:migrate
     description: Run database migrations
+
+
+  watch:
+    cmds:
+      - npm run watch 
+    description: watch
+
 
 ################### TO DO 
 #  test:
