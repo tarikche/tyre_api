@@ -8,11 +8,23 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-    <div  {{ react_component('Header') }}>
+    <div  
+        {{ react_component('Header') }}>
     </div>
-    <div  {{ react_component('Search') }}>
+    
+    <div class=" flex justify-center items-center ">
+        <div>
+            <img width='40%' class=" mx-auto" src="{{ asset('golf.jpg') }}" alt="Example Image">
+        <div/>
+        <div class=' ' >
+            {{ form_start(form ,{ 'attr' : { 'method': 'POST' , 'class': 'flex justify-between items-center px-80    ' } }) }}
+            {{ form_end(form) }}
+        <div/>
+    
     </div>
-    <div  {{ react_component('Tyres') }}>
+        
+    <div  
+        {{ react_component('Tyres') }}>
     </div>
     
 {% endblock %}

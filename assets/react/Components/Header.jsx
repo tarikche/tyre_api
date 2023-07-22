@@ -1,4 +1,7 @@
 import React from 'react';
+import { ShoppingCart } from 'lucide-react';
+import { UserCircle2 } from 'lucide-react';
+const cartNumber = 1;
 
 const Header = () => {
   return (
@@ -15,8 +18,11 @@ const Header = () => {
     </div>
     <div class="flex justify-end w-2/3  ">
         <div class=' w-1/2 flex justify-evenly'>
-            <a href="#" class="mr-4">Cart</a>
-            <a href="#">Login</a>
+        <a href="#" class="mr-4  w-28    flex justify-center items-center text-white bg-black rounded-full h-16">
+            <ShoppingCart size={40} strokeWidth={4} />
+            <span className='ml-3 font-sans font-bold   '>{cartNumber}</span>
+        </a>
+        <a href="#" class="mr-4 px-5 flex items-center"><UserCircle2 size={47} strokeWidth={3} /><span></span></a>
         </div>
     </div>
 </header>

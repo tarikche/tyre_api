@@ -25,7 +25,16 @@ class Tyre
     private ?string $season = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $dimentions = null;
+    private ?string $dimensions = null;
+
+    #[ORM\Column]
+    private ?int $width = null;
+
+    #[ORM\Column]
+    private ?int $height = null;
+
+    #[ORM\Column]
+    private ?int $diameter = null;
 
     public function __construct()
     {
@@ -91,14 +100,52 @@ class Tyre
         return $this;
     }
 
-    public function getDimentions(): ?string
+    public function getDimensions(): ?string
     {
-        return $this->dimentions;
+        return $this->dimensions;
     }
 
-    public function setDimentions(string $dimentions): static
+    public function setDimensions(string $dimensions): static
     {
-        $this->dimentions = $dimentions;
+        $this->dimensions = $dimensions;
+
+        return $this;
+    }
+
+    
+
+    public function getWidth(): ?int
+    {
+        return $this->width;
+    }
+
+    public function setWidth(int $width): static
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    public function getHeight(): ?int
+    {
+        return $this->height;
+    }
+
+    public function setHeight(int $height): static
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    public function getDiameter(): ?int
+    {
+        return $this->diameter;
+    }
+
+    public function setDiameter(int $diameter): static
+    {
+        $this->diameter = $diameter;
 
         return $this;
     }
