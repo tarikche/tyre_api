@@ -40,7 +40,7 @@ class TyreController extends AbstractController
         return new JsonResponse($data);
     }
 
-    #[Route('/api/results/{tyre}  ', name: 'tyre_results')]
+    #[Route('/api/result/{tyre}  ', name: 'tyre_result')]
     public function getTyreResults($tyre): Response   
     {
         $data = [];

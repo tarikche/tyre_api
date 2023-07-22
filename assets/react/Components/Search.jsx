@@ -41,7 +41,7 @@ const handleSuggestionClick = (suggestion) => {
 
   return (
     <div class='mb-8 mt-64 flex flex-col items-center font-sans'>
-      <input class='w-1/2 text-7xl p-5 rounded-full text-center  tracking-wide border-4  '
+      <input class='w-1/2 text-7xl mx p-5 rounded-full text-center  tracking-wide border-4  '
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
