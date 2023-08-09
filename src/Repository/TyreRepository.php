@@ -39,21 +39,19 @@ class TyreRepository extends ServiceEntityRepository
         }
     }
 
-    public function searchTyreByAll($value){
+    public function searchTyreByAll($tyreToSearch){
         $qb = $this->createQueryBuilder('t');
-          
-        if (is_numeric( $value)){
-            $qb->andWhere('t.dimensions LIKE :value')
-            ->setParameter('value', '%' . $value . '%')
-            ->distinct('t.');
-        }else{
-            $qb->andWhere('t.brand LIKE :value')
-            ->setParameter('value', '%' . $value . '%')
-            ->distinct('cc.categoryid');  
-        }
-        
-        $qb->orderBy('t.id', 'ASC')
-        ->setMaxResults(10);
+
+        $qb
+            ->andWhere('t.width = :width')
+            ->andWhere('t.height = :height')
+            ->andWhere('t.season = :season')
+            ->andWhere('t.diameter = :diameter')
+            ->setParameter('width', $tyreToSearch['width'])
+            ->setParameter('height', $tyreToSearch['height'])
+            ->setParameter('diameter', $tyreToSearch['diameter'])
+            ->setParameter('season', $tyreToSearch['season']);
+        // ->setMaxResults(10);
 
         return $qb->getQuery()->getResult();
 

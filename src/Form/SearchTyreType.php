@@ -45,7 +45,7 @@ class SearchTyreType extends AbstractType
                 'choices' => $this->getTireSeasonsFromDatabase(),
                 'label' => 'Season',
                 'attr' => [
-                    'class' => 'bg-red border border-gray-300 p-2 rounded-md w-full focus:outline-none focus:border-blue-500',
+                    'class' => 'bg-red border border-gray-300 p-2 rounded-md w-full focus:outline-none focus:border-blue-500  ',
                     'placeholder' => 'Enter diameter or select from the list',
                 ],
             ])

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TyreRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TyreRepository::class)]
@@ -18,6 +19,9 @@ class Tyre
     #[ORM\OneToMany(mappedBy: 'tyre', targetEntity: Stock::class, orphanRemoval: true)]
     private Collection $stocks;
 
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+    
     #[ORM\Column(length: 255)]
     private ?string $brand = null;
 
@@ -35,6 +39,11 @@ class Tyre
 
     #[ORM\Column]
     private ?int $diameter = null;
+
+    
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
 
     public function __construct()
     {
@@ -146,6 +155,30 @@ class Tyre
     public function setDiameter(int $diameter): static
     {
         $this->diameter = $diameter;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

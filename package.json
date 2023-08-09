@@ -30,6 +30,8 @@
     },
     "dependencies": {
         "@babel/preset-react": "^7.0.0",
-        "lucide-react": "^0.260.0"
+        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "lucide-react": "^0.260.0",
+        "tw-elements": "^1.0.0-beta2"
     }
 }
