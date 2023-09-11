@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\AddressForm;
+use openApi\Annotations as OA;
+
 class OrderController extends AbstractController
 {
 
@@ -23,6 +25,8 @@ class OrderController extends AbstractController
     }
 
     #[Route('/order/address', name: 'order_add_address')]
+    #[OA\Tag(name: "Order")]
+    #[OA\Response(response: "200", description: "Add address to order")]
     public function createOrder(Request $request): Response
     {
         $form = $this->createForm(AddressForm::class);
@@ -44,6 +48,8 @@ class OrderController extends AbstractController
     }
 
     #[Route('/order/confirm', name: 'confirm_order')]
+    #[OA\Tag(name: "Order")]
+    #[OA\Response(response: "200", description: "Confirm order")]
     public function confirmOrder(Request $request): Response
     {
         if (!$this->getUser()) {

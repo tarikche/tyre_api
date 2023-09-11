@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\VarDumper\Cloner\Data;
+use openApi\Annotations as OA;
 
 class HomeController extends AbstractController
 {
@@ -22,8 +23,13 @@ class HomeController extends AbstractController
     }
 
     #[Route('/home', name: 'home')]
+    #[OA\Tag(name: "Home")] 
+    #[OA\Response(response: "200", description: "Home page and search form for tyres")]
     public function index(Request $request): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
         $form = $this->createForm(SearchTyreType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

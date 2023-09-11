@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use openApi\Annotations as OA;
 
 class TyreController extends AbstractController
 {
@@ -21,6 +22,8 @@ class TyreController extends AbstractController
     }
 
     #[Route('/api/tyre/search  ', name: 'tyre_search')]
+    #[OA\Tag(name: "Tyre")]
+    #[OA\Response(response: "200", description: "Search for tyres")]
     public function searchTyre(Request $request): Response   
     {
         $data = [];
@@ -41,6 +44,8 @@ class TyreController extends AbstractController
     }
 
     #[Route('/api/result/{tyre}  ', name: 'tyre_result')]
+    #[OA\Tag(name: "Tyre")]
+    #[OA\Response(response: "200", description: "Get tyre results")]
     public function getTyreResults($tyre): Response   
     {
         $data = [];
