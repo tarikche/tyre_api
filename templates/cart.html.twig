@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'header.html.twig' %} 
+    <main class="w-full h-full flex justify-center  mt-36 ">
+        <section class=" w-1/2">
+            <div class=" w-full">
+                <h1 class='font-extrabold text-7xl py-28'>Panier</h1>
+                <table class="table w-full text-2xl h-60 mb-10">
+                    <thead >
+                        <tr class='text-left text-4xl '>
+                            <th class=''>Produit</th>
+                            <th class=''>Prix</th>
+                            <th class='pl-11'>Quantité</th>
+                            <th class=''>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set totalPrice = 0 %}
+                        {% for element in tyresWithQuantity %}
+                            <tr>
+                                <td>{{ element.tyre.name }}</td>
+                                <td>{{ element.tyre.price  }} €</td>
+                                <td class='pl-11'>{{ element.quantity }}</td>
+                                <td class='w-full flex justify-between pt-6'>
+                                    <a href="{{ path('cart_remove_tyre', {'tyre_id': element.tyre.id}) }}"><i class="fa-solid fa-minus"></i></a>
+                                    <a href="{{ path('cart_add_tyre', {'tyre_id': element.tyre.id}) }}"><i class="fa-solid fa-plus"></i></a>
+                                    <a href="{{ path('cart_delete_tyre', {'tyre_id': element.tyre.id}) }}"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            {% set totalPrice = totalPrice + (element.tyre.price  * element.quantity) %}
+                        {% else %}
+                            <tr>
+                                <td colspan="5">Votre panier est vide</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr class='my-16'>
+                            <td colspan="3" class='font-bold text-3xl underline'>Total</td>
+                            <td class='font-bold text-3xl underline'>{{ totalPrice }} €</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+        </section>
+        
+    </main>
+    <div class="w-full flex justify-center text-5xl mt-20">
+        <a href="{{ path('order_add_address')}}" class=" font-extrabold ">Order   </a>
+        {# <i class="fa-solid fa-cart-shopping"></i> #}
+    </div>
+{% endblock %}

@@ -75,7 +75,7 @@ class SearchTyreType extends AbstractType
     private function getTireDiametersFromDatabase()
     {
         // Replace this with your logic to fetch the tire diameters from the database
-        return ['15 inches' => '15', '16 inches' => '16', '17 inches' => '17'];
+        return ['15' => '15', '16' => '16', '17' => '17'];
     }
 
     private function getTireHeightsFromDatabase()

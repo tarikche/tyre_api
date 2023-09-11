@@ -1,0 +1,22 @@
+{% include 'base.html.twig' %}
+{% include 'header.html.twig' %}
+
+<div class='pt-28 px-52 text-xl flex items-center justify-center ' >
+    <form method="POST" class=' w-1/2  '>
+        {{ form_row(form._token) }}
+        <h2 class='p-2 text-xl font-bold'>Street</h2>
+        {{ form_widget(form.street, {'attr': {'class': ' w-full bg-red border border-gray-300 p-2 rounded-md  focus:outline-none focus:border-blue-500 ', 'placeholder': 'Enter diameter or select from the list'}}) }}
+        <h2 class='p-2 text-xl font-bold'>City</h2>
+        {{ form_widget(form.city, {'attr': {'class': 'w-full bg-red border border-gray-300 p-2 rounded-md  focus:outline-none focus:border-blue-500 ', 'placeholder': 'Enter diameter or select from the list'}}) }}
+        
+        <h2 class='p-2 text-xl font-bold'>Postal Code</h2>
+        {{ form_widget(form.postalCode, {'attr': {'class': 'bg-red border border-gray-300 p-2 rounded-md w-full focus:outline-none focus:border-blue-500 ', 'placeholder': 'Enter diameter or select from the list'}}) }}
+        
+        <h2 class='p-2 text-xl font-bold'>Phone Number</h2>
+        {{ form_widget(form.phoneNumber, {'attr': {'class': 'bg-red border border-gray-300 p-2 rounded-md w-full focus:outline-none focus:border-blue-500 ', 'placeholder': 'Enter diameter or select from the list'}}) }}
+        
+        <h2 class='p-2 text-xl font-bold'>_______________________________________</h2>
+        {{ form_widget(form.submit, {'attr': {'class': 'bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-16 '}}) }}
+    
+    </form>
+<div/>

@@ -45,6 +45,12 @@ class Tyre
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'tyre')]
+    private ?OrderLine $orderLine = null;
+
+    #[ORM\Column]
+    private ?int $price = null;
+
     public function __construct()
     {
         $this->stocks = new ArrayCollection();
@@ -179,6 +185,30 @@ class Tyre
     public function setDescription(?string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getOrderLine(): ?OrderLine
+    {
+        return $this->orderLine;
+    }
+
+    public function setOrderLine(?OrderLine $orderLine): static
+    {
+        $this->orderLine = $orderLine;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): static
+    {
+        $this->price = $price;
 
         return $this;
     }
