@@ -3,12 +3,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Order;
+use App\Entity\OrderLine;
 use App\Entity\Tyre;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -33,20 +35,35 @@ class DashboardController extends AbstractDashboardController
         // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
         // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
         //
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
+        if (!$this->isGranted('ROLE_ADMIN') || !$this->isGranted('ROLE_SUPER_ADMIN')) {
+            return $this->redirectToRoute('access_denied');
+        }
         return $this->render('/my-dashboard.html.twig');
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Tyre Api');
+            ->setTitle('T-tyre');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
-        yield MenuItem::linkToCrud('Orders', 'fas fa-file', Order::class);
-        yield MenuItem::linkToCrud('Tyres', 'fa-solid fa-car-side', Tyre::class);
+        yield MenuItem::linkToCrud('User', 'fas fa-users', User::class);
+        yield MenuItem::linkToCrud('Order', 'fas fa-file', Order::class);
+        yield MenuItem::linkToCrud('Tyre', 'fa-solid fa-car-side', Tyre::class);
+        yield MenuItem::linkToCrud('Order line', 'fa-solid fa-list-ol', OrderLine::class);
+        yield MenuItem::linkToRoute('Go to Home', 'fas fa-home', 'home');
+    }
+
+    #[Route(path: '/', name: 'redirect_to_admin')]
+    public function redirectToAdmin(Request $request): Response
+    {
+
+        return $this->redirectToRoute('app_login');
     }
 }

@@ -9,3 +9,12 @@ app.swagger_ui:
     path: /api/doc
     methods: GET
     defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+
+
+
+redirect_home:
+    path: /
+    controller: Symfony\Component\HttpFoundation\RedirectResponse
+    defaults:
+        path: /home
+        permanent: true # Use this option for permanent (HTTP 301) redirects

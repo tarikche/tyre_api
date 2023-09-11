@@ -9,24 +9,24 @@
 </style>
     {% include 'header.html.twig' %}
     
-    <div class=" flex justify-center items-center pt-28 tracking-wide ">
+    <div class=" flex justify-center items-center pt-12 tracking-wide ">
         <div>
             <img width='40%' class=" mx-auto " src="{{ asset('images/golf.jpg') }}" alt="Example Image">
         <div/>
 
-        <div class='pt-28 px-96 text-lg ' >
-            <form method="POST" class=' flex   '>
+        <div class='pt-28 px-52 text-lg flex items-center justify-center ' >
+            <form method="POST" class='  flex  '>
                 {{ form_row(form._token) }}
                 <h2 class='p-2 text-xl font-bold'>Width</h2>
-                {{ form_widget(form.width, {'attr': {'class': 'bg-red border border-gray-300 p-2 rounded-md w-full focus:outline-none focus:border-blue-500 mx-8', 'placeholder': 'Enter diameter or select from the list'}}) }}
+                {{ form_widget(form.width, {'attr': {'class': 'bg-red border border-gray-300 p-2 rounded-md  focus:outline-none focus:border-blue-500 mx-6', 'placeholder': 'Enter diameter or select from the list'}}) }}
                 <h2 class='p-2 text-xl font-bold'>Height</h2>
-                {{ form_widget(form.height, {'attr': {'class': 'bg-red border border-gray-300 p-2 rounded-md w-full focus:outline-none focus:border-blue-500 mx-8', 'placeholder': 'Enter diameter or select from the list'}}) }}
+                {{ form_widget(form.height, {'attr': {'class': 'bg-red border border-gray-300 p-2 rounded-md  focus:outline-none focus:border-blue-500 mx-6', 'placeholder': 'Enter diameter or select from the list'}}) }}
                 
                 <h2 class='p-2 text-xl font-bold'>Diameter</h2>
-                {{ form_widget(form.diameter, {'attr': {'class': 'bg-red border border-gray-300 p-2 rounded-md w-full focus:outline-none focus:border-blue-500 mx-8', 'placeholder': 'Enter diameter or select from the list'}}) }}
+                {{ form_widget(form.diameter, {'attr': {'class': 'bg-red border border-gray-300 p-2 rounded-md w-full focus:outline-none focus:border-blue-500 mx-6', 'placeholder': 'Enter diameter or select from the list'}}) }}
                 
                 <h2 class='p-2 text-xl font-bold'>Season</h2>
-                {{ form_widget(form.season, {'attr': {'class': 'bg-red border border-gray-300 p-2 rounded-md w-full focus:outline-none focus:border-blue-500 mx-8', 'placeholder': 'Enter diameter or select from the list'}}) }}
+                {{ form_widget(form.season, {'attr': {'class': 'bg-red border border-gray-300  rounded-md  focus:outline-none focus:border-blue-500 mx-6', 'placeholder': 'Enter diameter or select from the list'}}) }}
                 
                 {{ form_widget(form.submit, {'attr': {'class': 'bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mx-8'}}) }}
             
@@ -35,8 +35,8 @@
     
     </div>
         
-    <div  
+    {# <div  
         {{ react_component('Tyres') }}>
-    </div>
+    </div> #}
     
 {% endblock %}

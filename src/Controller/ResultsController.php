@@ -48,18 +48,26 @@ class ResultsController extends AbstractController
 
 
     #[Route('api/cart/add', methods: ['POST'], name: 'add_to_cart')]
-    #[OA\Tag(name: "Cart")]
-    #[OA\Response(response: "200", description: "Add to cart")]
+    #[OA\Tag(
+        name: "Cart"
+        )]
+    #[OA\Response(
+        response: "200", 
+        description: "Add to cart"
+        )]
     public function addToCart(Request $request): Response
     {   
-        // $tyreId = $request->request->get('tyre_id');
-        // $quantity = $request->request->get('quantity');
-        // $session = $request->getSession();
-        // $tyreAndQuantity = [
-        //     'tyre_id' => $tyreId,
-        //     'quantity' => $quantity
-        // ];
-        // $session->set('cart', $tyreAndQuantity);
-        return new Response('Added to cart');
+        $tyreId = $request->request->get('tyre_id');
+        $quantity = $request->request->get('quantity');
+        $session = $request->getSession();
+        $cart = $session->get('cart');
+        // if the tyre already exists in cart we will add the quantity
+        if ($cart && array_key_exists($tyreId, $cart)) {
+            $cart[$tyreId] += $quantity;
+        } else {
+            $cart[$tyreId] = (int) $quantity;
+        }
+        $session->set('cart', $cart);
+        return $this->redirectToRoute('cart');
     }
 }
